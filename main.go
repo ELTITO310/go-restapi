@@ -72,7 +72,14 @@ func postAlbums(c *gin.Context) {
 
 func getAlbumByID(c *gin.Context) {
 	id := c.Param("id")
+	driver, err := db.New("data")
 
-	c.IndentedJSON(http.StatusOK, gin.H{"id": id})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	dataAll := driver.Open(Album{}).Where("albumid", "=", id).Get().Raw()
+
+	c.IndentedJSON(http.StatusOK, dataAll)
 
 }
