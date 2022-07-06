@@ -7,9 +7,11 @@ CREATED BY: ELTITO310
 
 ## ROUTES
 
-### /albums
+### /api/user
+      - GET
       - POST
-      - GET
       
-### /albums/:id
+### /api/user/:id
       - GET
+      - PUT
+      - DELETE
